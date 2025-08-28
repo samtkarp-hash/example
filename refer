@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>Jubilee Referral Link</title></head>
+  <body style="font:16px/1.4 system-ui, sans-serif; max-width:560px; margin:40px auto;">
+    <h1>Create your referral link</h1>
+    <label>License number:
+      <input id="lic" placeholder="e.g. 01234567" style="margin-left:8px;">
+    </label>
+    <button id="go" style="margin-left:8px;">Generate</button>
+    <p id="out" style="margin-top:16px;"></p>
+
+    <script>
+      const base = "https://cal.com/team/jubilee-partnerships/intro";
+      document.getElementById('go').onclick = () => {
+        const lic = encodeURIComponent(document.getElementById('lic').value.trim());
+        if(!lic) { alert("Please enter a license number."); return; }
+        const url = `${base}?utm_source=referral&refid=${lic}`;
+        document.getElementById('out').innerHTML =
+          `Your link: <a href="${url}" target="_blank">${url}</a>`;
+      };
+    </script>
+  </body>
+</html>
